@@ -3,6 +3,12 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome to the Student Tracker</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="text-center">
+    <a asp-action="CreateEditStudent" asp-controller="Home" class="btn btn-primary">Create Student</a>
+    <a asp-action="Students" asp-controller="Home" class="btn btn-secondary">View Students</a>
 </div>
