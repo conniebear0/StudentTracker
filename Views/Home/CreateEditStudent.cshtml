@@ -1,0 +1,37 @@
+﻿@model Student;
+@{
+	ViewData["Title"] = "Create Student";
+}
+<div class="text-center">
+	<h1 class="display-4">Create or Edit Student</h1>
+</div>
+
+<form asp-action="CreateEditStudentForm">
+	<label>Student ID</label>
+	<input type="number" placeholder="0" class="form-control" asp-for="StudentID"/>
+
+	<label>First Name</label>
+	<input type="text" placeholder="e.g. Jane" class="form-control" asp-for="FirstName" />
+
+	<label>Last Name</label>
+	<input type="text" placeholder="e.g. Doe" class="form-control" asp-for="LastName"/>
+
+	<label>Gender</label>
+	<select class="form-select" asp-for="Gender">
+		<option value="Unspecified">Select a Gender</option>
+		<option value="Male">Male</option>
+		<option value="Female">Female</option>
+	</select>
+
+	<label>Faculty</label>
+	<select class="form-select" asp-for="Faculty">
+		<option value="Unspecified">Select a Faculty</option>
+		<option value="Applied Science">Applied Science</option>
+		<option value="Commerce">Commerce</option>
+		<option value="Law">Law</option>
+		<option value="Humanities">Humanities</option>
+		<option value="Information Technology">Information Technology</option>
+	</select>
+
+	<button type="submit" class="btn btn-primary mt-3">Save</button>
+</form>
