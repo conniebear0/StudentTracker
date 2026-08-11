@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentTracker.Models;
 using StudentTracker.Services;
 namespace StudentTracker.Controllers
@@ -24,42 +25,42 @@ namespace StudentTracker.Controllers
         {
             return View();
         }
-        public IActionResult Students()
+        public async Task<IActionResult> Students()
         {
-            var allStudents = _context.Students.ToList();
+            var allStudents = await _context.Students.ToListAsync();
             return View(allStudents);
         }
 
-        public IActionResult CreateEditStudentForm(Student model)
+        public async Task<IActionResult> CreateEditStudentForm(Student model)
         {
 
             if(model.StudentID == 0)
             {
-                _context.Students.Add(model);
+                await _context.Students.AddAsync(model);
             }
             else
             {
                 _context.Students.Update(model);
             }
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction("Students");
         }
-        public IActionResult CreateEditStudent(int? id)
+        public async Task<IActionResult> CreateEditStudent(int? id)
         {
             if (id != 0)
             {
-                var studentInDb = _context.Students.FirstOrDefault(x => x.StudentID == id);
+                var studentInDb = await _context.Students.FirstOrDefaultAsync(x => x.StudentID == id);
                 return View(studentInDb);
             }
             return View();
         }
 
-        public IActionResult DeleteStudent(int id)
+        public async Task<IActionResult> DeleteStudent(int id)
         {
-            var studentInDb = _context.Students.FirstOrDefault(x => x.StudentID == id);
+            var studentInDb = await _context.Students.FirstOrDefaultAsync(x => x.StudentID == id);
 
             _context.Students.Remove(studentInDb);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction("Students");
         }
 
