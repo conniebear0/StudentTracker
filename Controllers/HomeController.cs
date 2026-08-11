@@ -41,11 +41,16 @@ namespace StudentTracker.Controllers
             {
                 _context.Students.Update(model);
             }
-
+            _context.SaveChanges();
             return RedirectToAction("Students");
         }
-        public IActionResult CreateEditStudent()
+        public IActionResult CreateEditStudent(int? id)
         {
+            if (id != 0)
+            {
+                var studentInDb = _context.Students.FirstOrDefault(x => x.StudentID == id);
+                return View(studentInDb);
+            }
             return View();
         }
 
