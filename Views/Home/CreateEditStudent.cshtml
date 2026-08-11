@@ -7,8 +7,8 @@
 </div>
 
 <form asp-action="CreateEditStudentForm">
-	<label>Student ID</label>
-	<input type="number" placeholder="0" class="form-control" asp-for="StudentID"/>
+	@*<label>Student ID</label>*@
+	<input type="number" hidden placeholder="0" class="form-control" asp-for="StudentID"/>
 
 	<label>First Name</label>
 	<input type="text" placeholder="e.g. Jane" class="form-control" asp-for="FirstName" />
