@@ -1,10 +1,13 @@
-﻿@{
+﻿
+@{
 	ViewData["Title"] = "Home - View Students";
 }
+@model List<Student>;
 <div class="text-center">
 	<h1 class="display-4">All Students</h1>
 	<hr/>
 
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -13,10 +16,26 @@
 				<th>Last Name</th>
 				<th>Gender</th>
 				<th>Faculty</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 		<tbody>
-
+			@{
+				foreach(var student in Model)
+				{
+					<tr>
+						<td>@student.StudentID</td>
+						<td>@student.FirstName</td>
+						<td>@student.LastName</td>
+						<td>@student.Gender</td>
+						<td>@student.Faculty</td>
+						<td>
+							<a asp-action="CreateEditStudent" asp-route-id="@student.StudentID" class="btn btn-primary">Edit</a>
+							<a asp-action="DeleteStudent" asp-route-id="@student.StudentID" class="btn btn-danger">Delete</a>
+						</td>
+					</tr>
+				}
+			}
 		</tbody>
 	</table>
 </div>
