@@ -54,6 +54,15 @@ namespace StudentTracker.Controllers
             return View();
         }
 
+        public IActionResult DeleteStudent(int id)
+        {
+            var studentInDb = _context.Students.FirstOrDefault(x => x.StudentID == id);
+
+            _context.Students.Remove(studentInDb);
+            _context.SaveChanges();
+            return RedirectToAction("Students");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
