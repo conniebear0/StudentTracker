@@ -11,16 +11,17 @@
 	<input type="number" hidden placeholder="0" class="form-control" asp-for="StudentID"/>
 
 	<label>First Name</label>
-	<input type="text" placeholder="e.g. Jane" class="form-control" asp-for="FirstName" />
+	<input type="text" placeholder="e.g. Jane" required class="form-control" asp-for="FirstName" />
 
 	<label>Last Name</label>
-	<input type="text" placeholder="e.g. Doe" class="form-control" asp-for="LastName"/>
+	<input type="text" placeholder="e.g. Doe" required class="form-control" asp-for="LastName"/>
 
 	<label>Gender</label>
 	<select class="form-select" asp-for="Gender">
 		<option value="Unspecified">Select a Gender</option>
 		<option value="Male">Male</option>
 		<option value="Female">Female</option>
+		<option value="Non-Binary">Non-Binary</option>
 	</select>
 
 	<label>Faculty</label>
