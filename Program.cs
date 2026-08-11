@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using StudentTracker.Services;
+
 namespace StudentTracker
 {
     public class Program
@@ -8,6 +11,8 @@ namespace StudentTracker
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<StudentDbContext>(options => options.UseInMemoryDatabase("StudentDb"));
 
             var app = builder.Build();
 
